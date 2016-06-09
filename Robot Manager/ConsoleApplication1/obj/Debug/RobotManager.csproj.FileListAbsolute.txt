@@ -1,0 +1,24 @@
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Coordinator\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Coordinator\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Coordinator\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Coordinator\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Coordinator\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Coordinator\ConsoleApplication1\obj\Debug\RobotManager.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Interface Test\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Course Related\Spring 2012\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\obj\Debug\RobotManager.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\Course Related\2012-2013\Spring 2013\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\David\Documents\Course Related\2012-2013\Spring 2013\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Course Related\2012-2013\Spring 2013\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Course Related\2012-2013\Spring 2013\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Course Related\2012-2013\Spring 2013\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Course Related\2012-2013\Spring 2013\Intro to Engineering III\Group Project\Robot Manager\ConsoleApplication1\obj\Debug\RobotManager.csprojResolveAssemblyReference.cache
+C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
