@@ -1,12 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;  // To use Process.Start
+using System.IO.Ports;
 
 namespace ConsoleApplication1
 {
     internal class Program
     {
+        // Serial tips:
+        // https://web.archive.org/web/20130709121945/http://msmvps.com/blogs/coad/archive/2005/03/23/SerialPort-_2800_RS_2D00_232-Serial-COM-Port_2900_-in-C_2300_-.NET.aspx
+        public static void sendStringSerial(string portName, string toSend)
+        {
+            SerialPort myPort = new SerialPort(portName);
+            if (myPort.IsOpen == false)
+            {
+                try
+                {
+                    myPort.Open();
+                }
+                catch
+                {
+                    Console.WriteLine("Error: could not open serial port " + portName + ".");
+                    Console.ReadLine();
+                }
+            }
+
+            myPort.Write(toSend);
+        }
+        
         public static void Main(string[] args)
         {
+            // Test sending data over serial port
+            string serialPort = "COM3"; 
+            string testString = "Hi there";
+            sendStringSerial(serialPort, testString);
+
             // For debugging purposes, the most recent solution from CubeExplorer is used.
             // In reality, ScandAndSolve() should be used to get the solution for the desired cube.
             System.Net.WebClient wc = new System.Net.WebClient();
@@ -15,12 +43,12 @@ namespace ConsoleApplication1
             {
                 webData = wc.DownloadString("http://127.0.0.1:8081/?getLast");
             }
-            // Gives an error message and closes if CubeExplorer is not open
+            // Errors if cube explorer is not open
             catch
-            {          
+            {    
                 Console.WriteLine("Please open CubeExplorer.");
                 Console.ReadLine();
-                return;
+                return;                
             }
 
             // Removes unneeded characters from the solution string received from CubeExplorer

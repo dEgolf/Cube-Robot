@@ -22,3 +22,6 @@ C:\Users\David\Documents\Course Related\2012-2013\Spring 2013\Intro to Engineeri
 C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
 C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
 C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\David\Documents\Rubik's Cube Robot\Robot Manager\ConsoleApplication1\obj\Debug\RobotManager.csprojResolveAssemblyReference.cache
