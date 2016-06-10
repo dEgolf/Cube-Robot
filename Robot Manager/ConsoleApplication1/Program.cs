@@ -123,9 +123,8 @@ namespace ConsoleApplication1
         // Handle the low level commands for the simple case in which we turn a face
         // (there is no cube rotation)
         // Turns cube faces only 90 degrees at a time
-        private static void turnFace(string move)
-        {
-           
+        private static void lowLevelTurnFace(string move)
+        {           
             // Determine the claw used
             string clawUsed;
             if (move[0] == '1') // Left claw
@@ -162,118 +161,99 @@ namespace ConsoleApplication1
             }
         }
 
+        // Low level commands for SE cube rotation
+        private static void lowLevelSE()
+        {
+            displayAndSend("open2");
+            displayAndSend("1");
+            displayAndSend("close2");
+            displayAndSend("open1");
+            displayAndSend("1p");
+            displayAndSend("close1");  
+        }
+
+        // Low level commands for NE cube rotation
+        private static void lowLevelNE()
+        {
+            displayAndSend("open1");
+            displayAndSend("2");
+            displayAndSend("close1");
+            displayAndSend("open2");
+            displayAndSend("2p");
+            displayAndSend("close2");  
+        }
+
+        // Low level commands for SEp cube rotation
+        private static void lowLevelSEp()
+        {
+            displayAndSend("open2");
+            displayAndSend("1p");
+            displayAndSend("close2");
+            displayAndSend("open1");
+            displayAndSend("1");
+            displayAndSend("close1");  
+        }
+
+        // Low level commands for NEp cube rotation
+        private static void lowLevelNEp()
+        {
+            displayAndSend("open1 ");
+            displayAndSend("2p ");
+            displayAndSend("close1 ");
+            displayAndSend("open2 ");
+            displayAndSend("2 ");
+            displayAndSend("close2 "); 
+        }
 
         // Low level printing code
         private static void printLowLevel(List<string> moves)
-        {
-            List<string> usefulClawOpenClose = new List<string>();
-
+        { 
             for (int i = 0; i < moves.Count; i++)
-            {                
-
-                // Dealing not with the cube rotations (not a NE or SE rotation)
-                // This means we need to turn a face
-                if (moves[i].Contains("E") == false) // 
+            {                   
+                // Turn a face
+                if (moves[i].Contains("E") == false) // Not a SE or NE rotation command
                 {
-                    turnFace(moves[i]);
+                    lowLevelTurnFace(moves[i]);
                 }
-
-                else // dealing with the cube rotations
+                // Rotate the cube
+                else
                 {
                     if (moves[i] == "SE")
                     {
-                        usefulClawOpenClose.Add("o2");
-                        displayAndSend("open2 ");
-                        displayAndSend("1 ");
-                        displayAndSend("close2 ");
-                        displayAndSend("open1 ");
-                        displayAndSend("1p ");
-                        displayAndSend("close1 ");
-                        usefulClawOpenClose.Add("c1");
+                        lowLevelSE();
                     }
                     else if (moves[i] == "NE")
                     {
-                        usefulClawOpenClose.Add("o1");
-                        displayAndSend("open1 ");
-                        displayAndSend("2 ");
-                        displayAndSend("close1 ");
-                        displayAndSend("open2 ");
-                        displayAndSend("2p ");
-                        displayAndSend("close2 ");
-                        usefulClawOpenClose.Add("c2");
+                        lowLevelNE();
                     }
                     else if (moves[i] == "SEp")
                     {
-                        usefulClawOpenClose.Add("o2");
-                        displayAndSend("open2 ");
-                        displayAndSend("1p ");
-                        displayAndSend("close2 ");
-                        displayAndSend("open1 ");
-                        displayAndSend("1 ");
-                        displayAndSend("close1 ");
-                        usefulClawOpenClose.Add("c1");
+                        lowLevelSEp();
                     }
                     else if (moves[i] == "NEp")
                     {
-                        usefulClawOpenClose.Add("o1");
-                        displayAndSend("open1 ");
-                        displayAndSend("2p ");
-                        displayAndSend("close1 ");
-                        displayAndSend("open2 ");
-                        displayAndSend("2 ");
-                        displayAndSend("close2 ");
-                        usefulClawOpenClose.Add("c2");
+                        lowLevelNEp();
                     }
                     else if (moves[i] == "NE2")
                     {
-                        usefulClawOpenClose.Add("o1");
-                        displayAndSend("open1 ");
-
-                        displayAndSend("22 ");
-
-                        displayAndSend("close1 ");
-                        displayAndSend("open2 ");
-
-                        displayAndSend("22 ");
-
-                        displayAndSend("close2 ");
-                        usefulClawOpenClose.Add("c2");
+                        lowLevelNE();
+                        lowLevelNE();
                     }
-                    else // move == SE2
+                    else if (moves[i] == "SE2")
                     {
-                        usefulClawOpenClose.Add("o2");
-                        displayAndSend("open2 ");
-
-                        displayAndSend("12 ");
-
-                        displayAndSend("close2 ");
-                        displayAndSend("open1 ");
-
-                        displayAndSend("12 ");
-
-                        displayAndSend("close1 ");
-                        usefulClawOpenClose.Add("c1");
+                        lowLevelSE();
+                        lowLevelSE();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid move in printLowLevel().");
+                        Console.ReadLine();
+                        System.Environment.Exit(1);
                     }
                 }
               
                 Console.Write("\n");               
             }
-
-            //// Weed out useless stuff like o1 skip o1
-            //for (int i =  usefulClawOpenClose.Count - 2; i >= 0; i--)
-            //{
-            //    if (usefulClawOpenClose[i] == "S")
-            //    {
-            //        usefulClawOpenClose[i + 1] = "S";
-            //    }
-            //}
-
-            //Console.WriteLine();
-            //foreach (string openClose in usefulClawOpenClose)
-            //{
-            //    Console.WriteLine(openClose);
-            //}
-           
         }
     }
 }
