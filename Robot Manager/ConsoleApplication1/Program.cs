@@ -248,6 +248,12 @@ namespace ConsoleApplication1
             return toTrim;
         }
 
+        private static void displayAndSend(string toDisp)
+        {
+            Console.Write(toDisp);
+            sendStringSerial(toDisp);
+        }
+
 
         // Low level printing code
         private static void printLowLevel(List<string> moves)
@@ -256,120 +262,121 @@ namespace ConsoleApplication1
 
             for (int i = 0; i < moves.Count; i++)
             {
-                Console.Write("(");
+                displayAndSend("(");
 
                 // Dealing not with the cube rotations
                 if (moves[i].Contains("E") == false) // Not a NE or SE rotation
                 {
-                    Console.Write(moves[i] + " ");
+                    displayAndSend(moves[i] + " ");
 
-                    Console.Write("open" + moves[i][0] + " ");
+
+                    displayAndSend("open" + moves[i][0] + " ");
 
                     if (moves[i] == "1")
                     {
-                        Console.Write("1p");
+                        displayAndSend("1p");
 
                         if (i < moves.Count - 1)
                         {
                             if (moves[i + 1][0] != 'N')
                             {
-                                Console.Write(" close" + moves[i]);
+                                displayAndSend(" close" + moves[i]);
                                 usefulClawOpenClose.Add("c" + moves[i][0]);
                             }
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                Console.Write(" SKIP");
+                                displayAndSend(" SKIP");
                             }
                         }
                     }
                     else if (moves[i] == "2")
                     {
-                        Console.Write("2p");
+                        displayAndSend("2p");
 
                         if (i < moves.Count - 1)
                         {
                             if (moves[i + 1][0] != 'S')
                             {
-                                Console.Write(" close" + moves[i]);
+                                displayAndSend(" close" + moves[i]);
                                 usefulClawOpenClose.Add("c" + moves[i][0]);
                             }
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                Console.Write(" SKIP");
+                                displayAndSend(" SKIP");
                             }
                         }
                     }
                     else if (moves[i] == "2p")
                     {
-                        Console.Write("2");
+                        displayAndSend("2");
 
                         if (i < moves.Count - 1)
                         {
                             if (moves[i + 1][0] != 'S')
                             {
-                                Console.Write(" close" + moves[i]);
+                                displayAndSend(" close" + moves[i]);
                                 usefulClawOpenClose.Add("c" + moves[i][0]);
                             }
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                Console.Write(" SKIP");
+                                displayAndSend(" SKIP");
                             }
                         }
                     }
                     else if (moves[i] == "1p")
                     {
-                        Console.Write("1");
+                        displayAndSend("1");
 
                         if (i < moves.Count - 1)
                         {
                             if (moves[i + 1][0] != 'N')
                             {
-                                Console.Write(" close" + moves[i]);
+                                displayAndSend(" close" + moves[i]);
                                 usefulClawOpenClose.Add("c" + moves[i][0]);
                             }
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                Console.Write(" SKIP");
+                                displayAndSend(" SKIP");
                             }
                         }
                     }
                     else if (moves[i] == "12")
                     {
-                        Console.Write("12");
+                        displayAndSend("12");
 
                         if (i < moves.Count - 1)
                         {
                             if (moves[i + 1][0] != 'N')
                             {
-                                Console.Write(" close" + moves[i][0]);
+                                displayAndSend(" close" + moves[i][0]);
                                 usefulClawOpenClose.Add("c" + moves[i][0]);
                             }
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                Console.Write(" SKIP");
+                                displayAndSend(" SKIP");
                             }
                         }
                     }
                     else //  (moves[i] == "22")
                     {
-                        Console.Write("22");
+                        displayAndSend("22");
 
                         if (i < moves.Count - 1)
                         {
                             if (moves[i + 1][0] != 'N')
                             {
-                                Console.Write(" close" + moves[i][0]);
+                                displayAndSend(" close" + moves[i][0]);
                                 usefulClawOpenClose.Add("c" + moves[i][0]);
                             }
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                Console.Write(" SKIP");
+                                displayAndSend(" SKIP");
                             }
                         }
                     }
@@ -380,73 +387,73 @@ namespace ConsoleApplication1
                     if (moves[i] == "SE")
                     {
                         usefulClawOpenClose.Add("o2");
-                        Console.Write("open2 ");
-                        Console.Write("1 ");
-                        Console.Write("close2 ");
-                        Console.Write("open1 ");
-                        Console.Write("1p ");
-                        Console.Write("close1 ");
+                        displayAndSend("open2 ");
+                        displayAndSend("1 ");
+                        displayAndSend("close2 ");
+                        displayAndSend("open1 ");
+                        displayAndSend("1p ");
+                        displayAndSend("close1 ");
                         usefulClawOpenClose.Add("c1");
                     }
                     else if (moves[i] == "NE")
                     {
                         usefulClawOpenClose.Add("o1");
-                        Console.Write("open1 ");
-                        Console.Write("2 ");
-                        Console.Write("close1 ");
-                        Console.Write("open2 ");
-                        Console.Write("2p ");
-                        Console.Write("close2 ");
+                        displayAndSend("open1 ");
+                        displayAndSend("2 ");
+                        displayAndSend("close1 ");
+                        displayAndSend("open2 ");
+                        displayAndSend("2p ");
+                        displayAndSend("close2 ");
                         usefulClawOpenClose.Add("c2");
                     }
                     else if (moves[i] == "SEp")
                     {
                         usefulClawOpenClose.Add("o2");
-                        Console.Write("open2 ");
-                        Console.Write("1p ");
-                        Console.Write("close2 ");
-                        Console.Write("open1 ");
-                        Console.Write("1 ");
-                        Console.Write("close1 ");
+                        displayAndSend("open2 ");
+                        displayAndSend("1p ");
+                        displayAndSend("close2 ");
+                        displayAndSend("open1 ");
+                        displayAndSend("1 ");
+                        displayAndSend("close1 ");
                         usefulClawOpenClose.Add("c1");
                     }
                     else if (moves[i] == "NEp")
                     {
                         usefulClawOpenClose.Add("o1");
-                        Console.Write("open1 ");
-                        Console.Write("2p ");
-                        Console.Write("close1 ");
-                        Console.Write("open2 ");
-                        Console.Write("2 ");
-                        Console.Write("close2 ");
+                        displayAndSend("open1 ");
+                        displayAndSend("2p ");
+                        displayAndSend("close1 ");
+                        displayAndSend("open2 ");
+                        displayAndSend("2 ");
+                        displayAndSend("close2 ");
                         usefulClawOpenClose.Add("c2");
                     }
                     else if (moves[i] == "NE2")
                     {
                         usefulClawOpenClose.Add("o1");
-                        Console.Write("open1 ");
-                        Console.Write("22 ");
-                        Console.Write("close1 ");
-                        Console.Write("open2 ");
-                        Console.Write("22 ");
-                        Console.Write("close2 ");
+                        displayAndSend("open1 ");
+                        displayAndSend("22 ");
+                        displayAndSend("close1 ");
+                        displayAndSend("open2 ");
+                        displayAndSend("22 ");
+                        displayAndSend("close2 ");
                         usefulClawOpenClose.Add("c2");
                     }
                     else // move == SE2
                     {
                         usefulClawOpenClose.Add("o2");
-                        Console.Write("open2 ");
-                        Console.Write("12 ");
-                        Console.Write("close2 ");
-                        Console.Write("open1 ");
-                        Console.Write("12 ");
-                        Console.Write("close1 ");
+                        displayAndSend("open2 ");
+                        displayAndSend("12 ");
+                        displayAndSend("close2 ");
+                        displayAndSend("open1 ");
+                        displayAndSend("12 ");
+                        displayAndSend("close1 ");
                         usefulClawOpenClose.Add("c1");
                     }
                 }
 
-                Console.Write(")");
-                Console.WriteLine();
+                displayAndSend(")");
+                displayAndSend("\n");
 
                
             }
