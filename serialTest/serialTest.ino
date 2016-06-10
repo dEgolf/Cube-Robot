@@ -15,15 +15,17 @@ void setup() {
 }
 
 void loop() {
-
-  // Receives data sent
+  digitalWrite(13, HIGH);
+  
+  // Receives serial data 
   // Turns off LED to indicate data was received
   if (Serial.available() > 0) {
     dataIn = Serial.readString();   
-    digitalWrite(13, LOW);    /
-    delay(1000);               
-    digitalWrite(13, HIGH);
+    digitalWrite(13, LOW);  
   }
+
+  // Sends serial data
+  Serial.print(dataIn);
  
   delay(1000);              
 }

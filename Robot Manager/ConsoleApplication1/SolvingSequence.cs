@@ -83,5 +83,7 @@ namespace ConsoleApplication1
             Console.WriteLine((int)time / 60 + " minute(s) and "
                      + (int)(60 * ((double)(time / 60) - (int)(time / 60))) + " s.");
         }
+
+
     }
 }

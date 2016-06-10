@@ -7,11 +7,11 @@ namespace ConsoleApplication1
 {
     internal class Program
     {
-        // Serial tips:
-        // https://web.archive.org/web/20130709121945/http://msmvps.com/blogs/coad/archive/2005/03/23/SerialPort-_2800_RS_2D00_232-Serial-COM-Port_2900_-in-C_2300_-.NET.aspx
-        public static void sendStringSerial(string portName, string toSend)
-        {
-            SerialPort myPort = new SerialPort(portName);
+        static SerialPort myPort;
+
+        // Tries to open port "portName", if it isn't already open
+        public static void tryOpenPort()
+        {          
             if (myPort.IsOpen == false)
             {
                 try
@@ -20,20 +20,45 @@ namespace ConsoleApplication1
                 }
                 catch
                 {
-                    Console.WriteLine("Error: could not open serial port " + portName + ".");
+                    Console.WriteLine("Error: could not open serial port " + myPort.PortName + ".");
                     Console.ReadLine();
                 }
             }
+        }
 
+        // Send string "toSend" over port "portName"
+        public static void sendStringSerial(string toSend)
+        {
+            tryOpenPort();
             myPort.Write(toSend);
         }
-        
+
+        // Start listening for data on port "portName"
+        public static void startSerialListen()
+        {
+            tryOpenPort();
+            myPort.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);
+        }
+
+        // Runs when data received serially
+        private static void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string dataIn = myPort.ReadExisting();
+            Console.WriteLine(dataIn);
+        }
+
         public static void Main(string[] args)
         {
-            // Test sending data over serial port
-            string serialPort = "COM3"; 
+            // Create serial port
+            string portName = "COM3";
+            myPort = new SerialPort(portName);
+
+            // Try to send data over port
             string testString = "Hi there";
-            sendStringSerial(serialPort, testString);
+            sendStringSerial(testString);
+
+            // Start receiving data over serial port (Arduino serial.write commands will show up)
+            // startSerialListen();
 
             // For debugging purposes, the most recent solution from CubeExplorer is used.
             // In reality, ScandAndSolve() should be used to get the solution for the desired cube.
@@ -154,6 +179,11 @@ namespace ConsoleApplication1
             bestSequence.printStatistics();
             bestSequence.printSequence();
 
+
+            // Print low level claw instructions to carry out bestSequence
+            Console.WriteLine();
+            printLowLevel(bestSequence.moves);
+
             // Keeps the console window open
             Console.ReadLine();
         }
@@ -216,6 +246,226 @@ namespace ConsoleApplication1
             toTrim = toTrim.Remove(0, 12);
             toTrim = toTrim.Substring(0, toTrim.LastIndexOf("</BODY"));
             return toTrim;
+        }
+
+
+        // Low level printing code
+        private static void printLowLevel(List<string> moves)
+        {
+            List<string> usefulClawOpenClose = new List<string>();
+
+            for (int i = 0; i < moves.Count; i++)
+            {
+                Console.Write("(");
+
+                // Dealing not with the cube rotations
+                if (moves[i].Contains("E") == false) // Not a NE or SE rotation
+                {
+                    Console.Write(moves[i] + " ");
+
+                    Console.Write("open" + moves[i][0] + " ");
+
+                    if (moves[i] == "1")
+                    {
+                        Console.Write("1p");
+
+                        if (i < moves.Count - 1)
+                        {
+                            if (moves[i + 1][0] != 'N')
+                            {
+                                Console.Write(" close" + moves[i]);
+                                usefulClawOpenClose.Add("c" + moves[i][0]);
+                            }
+                            else
+                            {
+                                usefulClawOpenClose.Add("S");
+                                Console.Write(" SKIP");
+                            }
+                        }
+                    }
+                    else if (moves[i] == "2")
+                    {
+                        Console.Write("2p");
+
+                        if (i < moves.Count - 1)
+                        {
+                            if (moves[i + 1][0] != 'S')
+                            {
+                                Console.Write(" close" + moves[i]);
+                                usefulClawOpenClose.Add("c" + moves[i][0]);
+                            }
+                            else
+                            {
+                                usefulClawOpenClose.Add("S");
+                                Console.Write(" SKIP");
+                            }
+                        }
+                    }
+                    else if (moves[i] == "2p")
+                    {
+                        Console.Write("2");
+
+                        if (i < moves.Count - 1)
+                        {
+                            if (moves[i + 1][0] != 'S')
+                            {
+                                Console.Write(" close" + moves[i]);
+                                usefulClawOpenClose.Add("c" + moves[i][0]);
+                            }
+                            else
+                            {
+                                usefulClawOpenClose.Add("S");
+                                Console.Write(" SKIP");
+                            }
+                        }
+                    }
+                    else if (moves[i] == "1p")
+                    {
+                        Console.Write("1");
+
+                        if (i < moves.Count - 1)
+                        {
+                            if (moves[i + 1][0] != 'N')
+                            {
+                                Console.Write(" close" + moves[i]);
+                                usefulClawOpenClose.Add("c" + moves[i][0]);
+                            }
+                            else
+                            {
+                                usefulClawOpenClose.Add("S");
+                                Console.Write(" SKIP");
+                            }
+                        }
+                    }
+                    else if (moves[i] == "12")
+                    {
+                        Console.Write("12");
+
+                        if (i < moves.Count - 1)
+                        {
+                            if (moves[i + 1][0] != 'N')
+                            {
+                                Console.Write(" close" + moves[i][0]);
+                                usefulClawOpenClose.Add("c" + moves[i][0]);
+                            }
+                            else
+                            {
+                                usefulClawOpenClose.Add("S");
+                                Console.Write(" SKIP");
+                            }
+                        }
+                    }
+                    else //  (moves[i] == "22")
+                    {
+                        Console.Write("22");
+
+                        if (i < moves.Count - 1)
+                        {
+                            if (moves[i + 1][0] != 'N')
+                            {
+                                Console.Write(" close" + moves[i][0]);
+                                usefulClawOpenClose.Add("c" + moves[i][0]);
+                            }
+                            else
+                            {
+                                usefulClawOpenClose.Add("S");
+                                Console.Write(" SKIP");
+                            }
+                        }
+                    }
+
+                }
+                else // dealing with the cube rotations
+                {
+                    if (moves[i] == "SE")
+                    {
+                        usefulClawOpenClose.Add("o2");
+                        Console.Write("open2 ");
+                        Console.Write("1 ");
+                        Console.Write("close2 ");
+                        Console.Write("open1 ");
+                        Console.Write("1p ");
+                        Console.Write("close1 ");
+                        usefulClawOpenClose.Add("c1");
+                    }
+                    else if (moves[i] == "NE")
+                    {
+                        usefulClawOpenClose.Add("o1");
+                        Console.Write("open1 ");
+                        Console.Write("2 ");
+                        Console.Write("close1 ");
+                        Console.Write("open2 ");
+                        Console.Write("2p ");
+                        Console.Write("close2 ");
+                        usefulClawOpenClose.Add("c2");
+                    }
+                    else if (moves[i] == "SEp")
+                    {
+                        usefulClawOpenClose.Add("o2");
+                        Console.Write("open2 ");
+                        Console.Write("1p ");
+                        Console.Write("close2 ");
+                        Console.Write("open1 ");
+                        Console.Write("1 ");
+                        Console.Write("close1 ");
+                        usefulClawOpenClose.Add("c1");
+                    }
+                    else if (moves[i] == "NEp")
+                    {
+                        usefulClawOpenClose.Add("o1");
+                        Console.Write("open1 ");
+                        Console.Write("2p ");
+                        Console.Write("close1 ");
+                        Console.Write("open2 ");
+                        Console.Write("2 ");
+                        Console.Write("close2 ");
+                        usefulClawOpenClose.Add("c2");
+                    }
+                    else if (moves[i] == "NE2")
+                    {
+                        usefulClawOpenClose.Add("o1");
+                        Console.Write("open1 ");
+                        Console.Write("22 ");
+                        Console.Write("close1 ");
+                        Console.Write("open2 ");
+                        Console.Write("22 ");
+                        Console.Write("close2 ");
+                        usefulClawOpenClose.Add("c2");
+                    }
+                    else // move == SE2
+                    {
+                        usefulClawOpenClose.Add("o2");
+                        Console.Write("open2 ");
+                        Console.Write("12 ");
+                        Console.Write("close2 ");
+                        Console.Write("open1 ");
+                        Console.Write("12 ");
+                        Console.Write("close1 ");
+                        usefulClawOpenClose.Add("c1");
+                    }
+                }
+
+                Console.Write(")");
+                Console.WriteLine();
+
+               
+            }
+
+            //// Weed out useless stuff like o1 skip o1
+            //for (int i =  usefulClawOpenClose.Count - 2; i >= 0; i--)
+            //{
+            //    if (usefulClawOpenClose[i] == "S")
+            //    {
+            //        usefulClawOpenClose[i + 1] = "S";
+            //    }
+            //}
+
+            //Console.WriteLine();
+            //foreach (string openClose in usefulClawOpenClose)
+            //{
+            //    Console.WriteLine(openClose);
+            //}
+           
         }
     }
 }
