@@ -286,7 +286,7 @@ namespace ConsoleApplication1
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                displayAndSend(" SKIP");
+                                Console.Write(" SKIP");
                             }
                         }
                     }
@@ -304,7 +304,7 @@ namespace ConsoleApplication1
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                displayAndSend(" SKIP");
+                                Console.Write(" SKIP");
                             }
                         }
                     }
@@ -322,7 +322,7 @@ namespace ConsoleApplication1
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                displayAndSend(" SKIP");
+                                Console.Write(" SKIP");
                             }
                         }
                     }
@@ -340,13 +340,15 @@ namespace ConsoleApplication1
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                displayAndSend(" SKIP");
+                                Console.Write(" SKIP");
                             }
                         }
                     }
                     else if (moves[i] == "12")
-                    {
-                        displayAndSend("12");
+                    {   
+                        //displayAndSend("12 ");
+                        displayAndSend("1 ");
+                        displayAndSend("1 ");
 
                         if (i < moves.Count - 1)
                         {
@@ -358,13 +360,15 @@ namespace ConsoleApplication1
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                displayAndSend(" SKIP");
+                                Console.Write(" SKIP");
                             }
                         }
                     }
                     else //  (moves[i] == "22")
                     {
-                        displayAndSend("22");
+                        //displayAndSend("22 ");
+                        displayAndSend("2 ");
+                        displayAndSend("2 ");
 
                         if (i < moves.Count - 1)
                         {
@@ -376,7 +380,7 @@ namespace ConsoleApplication1
                             else
                             {
                                 usefulClawOpenClose.Add("S");
-                                displayAndSend(" SKIP");
+                                Console.Write(" SKIP");
                             }
                         }
                     }
@@ -432,10 +436,19 @@ namespace ConsoleApplication1
                     {
                         usefulClawOpenClose.Add("o1");
                         displayAndSend("open1 ");
-                        displayAndSend("22 ");
+
+                        //displayAndSend("22 ");
+                        displayAndSend("2 ");
+                        displayAndSend("2 ");
+
                         displayAndSend("close1 ");
                         displayAndSend("open2 ");
-                        displayAndSend("22 ");
+
+                        //displayAndSend("22 ");
+                        displayAndSend("2 ");
+                        displayAndSend("2 ");
+
+
                         displayAndSend("close2 ");
                         usefulClawOpenClose.Add("c2");
                     }
@@ -443,10 +456,18 @@ namespace ConsoleApplication1
                     {
                         usefulClawOpenClose.Add("o2");
                         displayAndSend("open2 ");
-                        displayAndSend("12 ");
+
+                        //displayAndSend("12 ");
+                        displayAndSend("1 ");
+                        displayAndSend("1 ");
+
                         displayAndSend("close2 ");
                         displayAndSend("open1 ");
-                        displayAndSend("12 ");
+
+                        //displayAndSend("12 ");
+                        displayAndSend("1 ");
+                        displayAndSend("1 ");
+
                         displayAndSend("close1 ");
                         usefulClawOpenClose.Add("c1");
                     }
