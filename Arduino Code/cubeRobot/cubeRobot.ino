@@ -79,14 +79,14 @@ void loop(){
 
 // Maps the input string to an int so it can be used in a switch statement 
 int mapInput(String input){
-  if (input == "") return 1; //Open right claw
-  else if (input == "") return 2; //Open left claw
-  else if (input == "") return 3; //Close right claw
-  else if (input == "") return 4; //Close left claw
-  else if (input == "") return 5; //Rotate right claw clockwise
-  else if (input == "") return 6; //Rotate right claw counterclockwise
-  else if (input == "") return 7; //Rotate left claw clockwise
-  else if (input == "") return 8; //Rotate left claw counterclockwise
+  if (input == "open2") return 1; //Open right claw
+  else if (input == "open1") return 2; //Open left claw
+  else if (input == "close2") return 3; //Close right claw
+  else if (input == "close1") return 4; //Close left claw
+  else if (input == "2") return 5; //Rotate right claw clockwise
+  else if (input == "2p") return 6; //Rotate right claw counterclockwise
+  else if (input == "1") return 7; //Rotate left claw clockwise
+  else if (input == "1p") return 8; //Rotate left claw counterclockwise
   else return 0; // Unrecognized command
 }
 

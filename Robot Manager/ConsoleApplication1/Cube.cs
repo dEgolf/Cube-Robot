@@ -25,7 +25,7 @@ namespace ConsoleApplication1
         // Returns, in the form of a string, the cube rotation necessary to access the inputted face
         public string AccessFace(string face)
         {
-            // In this case, the face is already accessible
+            // In this case, the face is already accessible (the start of the face-lists holds the immediately accessible faces)
             if (face == ne.faceList[0] || face == se.faceList[0])
             {
                 return "";
@@ -173,7 +173,7 @@ namespace ConsoleApplication1
             Console.Write("V Cycle: "); v.print(); Console.WriteLine();
         }
 
-        // Copies "To" to "From"
+        // Copies "From" to "To"
         private void copyFaceList(Cycle To, Cycle From)
         {
             for (int i = 0; i < 4; i++)

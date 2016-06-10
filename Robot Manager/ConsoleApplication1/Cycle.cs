@@ -4,12 +4,15 @@ using System.Collections.Generic;
 namespace ConsoleApplication1
 {
     // Each cube configuration has three cycles.
-    // The NE cycle is a list of faces that can be accessed by performing a NE cube rotation repeatedly
+    // The NE cycle is a list of faces that can be accessed (by the left claw) by performing a NE cube rotation repeatedly (rotate TO the NE - right claw turns clockwise)
     // -The faces are listed in this order, if the cube is at its starting position: F, D, B, U
-    // The SE cycle is a list of faces that can be accessed by performing a SE cube rotation repeatedly
+    // The SE cycle is a list of faces that can be accessed (by the right claw) by performing a SE cube rotation repeatedly (rotate TO the SE - left claw turns clockwise)
     // -The faces are listed in this order, if the cube is at its starting position: R, U, L, D
-    // The V cycle is the list of faces that excludes the up and down face
-    // -The faces are listed in this order
+    // The V cycle is the list of faces that excludes the up and down face (go around the equator)
+    
+
+    // Rotating the cube changes which faces (relative to original orientation) are in which cycle
+    // Each of the methods below are used as building blocks to deal with these changes
     public class Cycle
     {
         // Holds the list of faces in this cycle

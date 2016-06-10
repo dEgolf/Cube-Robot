@@ -5,25 +5,26 @@ namespace ConsoleApplication1
 {
     internal class SolvingSequence
     {
-        // Stores the list of moves that are contained in this sequence.
+        // Stores the list of moves that are contained in this sequence (along with statistic on its composition)
         // Here is a legend:
         // NE stands for the NE cube rotation.
+        // --This means we rotate the cube TO the north east (the right claw turns clockwise, and the cube turns with it)
         // -The 2 suffix means to carry out that move twice.
         // -The p suffix means to carry out the inverse of that move.
-        // -If a move starts with "1", then that means "rotate claw 1", that is, the claw on the left
-        // -If a move starts with "2", then that means "rotate claw 2", that is, the claw on the right
+        // -If a move starts with "1", then that means "rotate claw 1", that is, the claw on the left (clockwise)
+        // -If a move starts with "2", then that means "rotate claw 2", that is, the claw on the right (clockwise)
         // List of moves used: NE2, SE2, NE, SE, NEp, SEp,1,2,12,22,1p,2p
         public List<string> moves;
 
         private int totalQuarterClawRotations = 0;
-        private int totalTimesClawOpenedAndClosed = 0; // Opening and closing a claw once would only add ONE to this variable
-        private double timeClawOpen = 0.5; // The time in seconds that it takes for the robot to open a claw
-        private double timePerClawTurn = 1.0; // The time in seconds that it takes for the robot to turn a claw 1/4 of a full rotation
+        private int totalTimesClawOpenedAndClosed = 0;  // Opening and closing a claw once would only add ONE to this variable
+        private double timeClawOpen = 0.5;              // The time in seconds that it takes for the robot to open a claw
+        private double timePerClawTurn = 1.0;           // The time in seconds that it takes for the robot to turn a claw 1/4 of a full rotation
 
-        private int doubleCubeRotations = 0; // Double cube rotations are: NE2 and SE2
-        private int singleCubeRotations = 0; // Single cube rotations are : NE, SE, NEp, SEp
-        private int totalCubeRotations = 0; // The number of quarter turns the cube is rotated
-        private int totalFaceRotations = 0; // The total number of quarter turn face rotations performed
+        private int doubleCubeRotations = 0;    // Double cube rotations are: NE2 and SE2
+        private int singleCubeRotations = 0;    // Single cube rotations are : NE, SE, NEp, SEp
+        private int totalCubeRotations = 0;     // The number of quarter turns the cube is rotated
+        private int totalFaceRotations = 0;     // The total number of quarter turn face rotations performed
 
         // The total time to execute the sequence
         public double totalTime = 0;
@@ -41,6 +42,7 @@ namespace ConsoleApplication1
             {
                 Console.Write(move + " ");
             }
+            Console.WriteLine();
         }
 
         // Displays the statistics calculated in calculate()
