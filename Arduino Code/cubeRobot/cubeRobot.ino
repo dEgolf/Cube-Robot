@@ -9,11 +9,11 @@ by Richard Arkusinski
 
 int cTime = 12; // The time to complete each claw command in ms
 int rTime = 12; // The time to complete each rotation command in ms
-int pause = 100; // The time delay between commands in ms
+int pause = 1000; // The time delay between commands in ms
 
 //Assuming openPosition is > closedPosition
-int openPosition = 50; // The open position of the claw
-int closedPosition = 0; // The closed position of the claw
+int openPosition = 120; // The open position of the claw
+int closedPosition = 85; // The closed position of the claw
 
 // Create servo objects
 Servo rightClaw, rightRotate, leftClaw, leftRotate;
@@ -74,6 +74,7 @@ void loop(){
       default:
         Serial.println("COSMIC RAYS AHOY"); break;
     }
+    delay(pause);
   }
 }
 
